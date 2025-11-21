@@ -1,0 +1,17 @@
+{
+  "name": "aga_low",
+  "description": "180x135 MPEG-1 video @250kbps, MP2 audio 64kbps",
+  "output_args": [
+    "-vcodec", "mpeg1video",
+    "-b:v", "250k",
+    "-r", "24",
+    "-vf", "scale=180:-2",
+    "-acodec", "mp2",
+    "-ar", "22050",
+    "-ac", "1",
+    "-af", "volume=3dB",
+    "-b:a", "64k"
+  ],
+  "listen_port": 5001
+}
+

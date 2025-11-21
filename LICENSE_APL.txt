@@ -1,0 +1,34 @@
+AmiStreamRaider Proprietary License (APL)
+Version 1.0 – © 2025 Cem "Cego" Göktas
+
+Alle Rechte vorbehalten.
+
+Diese Software ("AmiStreamRaider" und alle dazugehörigen Komponenten, Dateien und Dokumentationen)
+ist urheberrechtlich geschützt. Sie darf ausschließlich mit ausdrücklicher, schriftlicher Genehmigung
+des Urhebers genutzt werden.
+
+1. Nutzungsrechte
+   Der Einsatz dieser Software ist ausschließlich für private, nicht-kommerzielle Zwecke erlaubt.
+   Jede kommerzielle Nutzung, Verwertung, Vermietung, Verpachtung, der Verkauf oder die Integration
+   in kommerzielle Produkte ist untersagt, sofern keine schriftliche Genehmigung des Urhebers vorliegt.
+
+2. Veränderung und Weitergabe
+   Es ist ausdrücklich untersagt, den Quellcode oder Teile davon zu verändern, zu dekompilieren,
+   zu disassemblieren oder in anderer Form zu modifizieren.
+   Eine Weitergabe der Software, ob im Original oder in veränderter Form, ist ohne vorherige
+   schriftliche Zustimmung des Urhebers nicht gestattet.
+
+3. Haftungsausschluss
+   Diese Software wird "wie besehen" bereitgestellt, ohne jegliche Garantie oder Gewährleistung.
+   Der Autor übernimmt keine Haftung für Schäden, die durch Nutzung oder Fehlfunktion
+   der Software entstehen könnten.
+
+4. Eigentumsrechte
+   Der vollständige Urheber- und Eigentumstitel verbleibt beim Autor:
+   © 2025 Cem "Cego" Göktas. Alle Rechte vorbehalten.
+
+5. Kontakt für Lizenzen
+   Für Anfragen zu Nutzung, Lizenzierung oder Kooperationen:
+   📧 amigabench@gmail.com
+
+Durch Installation, Nutzung oder Verbreitung dieser Software erklären Sie sich mit diesen Bedingungen einverstanden.

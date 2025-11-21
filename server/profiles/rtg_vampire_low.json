@@ -1,0 +1,16 @@
+{
+  "name": "rtg_vampire_low",
+  "description": "480x270 MPEG-1 video @1000kbps, MP2 audio 128kbps",
+  "output_args": [
+    "-vcodec", "mpeg1video",
+    "-b:v", "1000k",
+    "-r", "24",
+    "-vf", "scale=480:-2",
+    "-acodec", "mp2",
+    "-ar", "22050",
+    "-ac", "2",
+    "-af", "volume=3dB",
+    "-b:a", "128k"
+  ],
+  "listen_port": 5001
+}

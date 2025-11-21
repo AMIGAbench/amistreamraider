@@ -1,0 +1,16 @@
+{
+  "name": "aga_060",
+  "description": "320x240 MPEG-1 video @500kbps, MP2 audio 96kbps",
+  "output_args": [
+    "-vcodec", "mpeg1video",
+    "-b:v", "500k",
+    "-r", "24",
+    "-vf", "scale=320:-2",
+    "-acodec", "mp2",
+    "-ar", "22050",
+    "-ac", "2",
+    "-af", "volume=3dB",
+    "-b:a", "96k"
+  ],
+  "listen_port": 5001
+}

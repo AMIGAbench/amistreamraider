@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Simple wrapper to manage the ASRServer Docker container.
+# Usage:
+#   asrserver            # start (default)
+#   asrserver start      # start
+#   asrserver stop       # stop
+#   asrserver restart    # restart
+#   asrserver status     # show status
+#   asrserver logs       # follow logs
+#   asrserver load <tar> # docker load image tarball
+
+NAME=${ASRSERVER_NAME:-asrserver}
+IMAGE=${ASRSERVER_IMAGE:-asrserver:0.1.0}
+PORT_HTTP=${ASRSERVER_HTTP_PORT:-8080}
+PORT_TCP=${ASRSERVER_TCP_PORT:-5001}
+DATA_BASE=${ASRSERVER_DATA_DIR:-$(pwd)/data}
+RUNS_DIR=${ASRSERVER_RUNS_DIR:-${DATA_BASE}/runs}
+THUMB_DIR=${ASRSERVER_THUMB_DIR:-${DATA_BASE}/thumb_cache}
+
+cmd=${1:-start}
+
+ensure_dirs() {
+  mkdir -p "$RUNS_DIR" "$THUMB_DIR"
+}
+
+is_running() {
+  docker ps --format '{{.Names}}' | grep -qx "$NAME"
+}
+
+start() {
+  ensure_dirs
+  if is_running; then
+    echo "Container '$NAME' already running."; return 0
+  fi
+  docker run -d --name "$NAME" --restart unless-stopped \
+    -p ${PORT_HTTP}:8080 -p ${PORT_TCP}:5001 \
+    -v "${RUNS_DIR}:/data/runs" -v "${THUMB_DIR}:/data/thumb_cache" \
+    -e TRANSCODE_USE_STUBS=0 \
+    "$IMAGE"
+  echo "Started '$NAME'. API: http://localhost:${PORT_HTTP}"
+}
+
+stop() {
+  docker rm -f "$NAME" >/dev/null 2>&1 || true
+  echo "Stopped '$NAME'."
+}
+
+restart() { stop; start; }
+
+status() {
+  docker ps -a --filter name=^/${NAME}$ --format 'table {{.Names}}\t{{.Status}}\t{{.Image}}'
+}
+
+logs() { docker logs -f "$NAME"; }
+
+load_image() {
+  tarball=${1:-}
+  if [ -z "$tarball" ] || [ ! -f "$tarball" ]; then
+    echo "Usage: $0 load <image.tar>"; exit 1
+  fi
+  docker load -i "$tarball"
+}
+
+case "$cmd" in
+  start|run) start ;;
+  stop) stop ;;
+  restart) restart ;;
+  status) status ;;
+  logs) logs ;;
+  load) shift; load_image "$@" ;;
+  *) start ;;
+esac
