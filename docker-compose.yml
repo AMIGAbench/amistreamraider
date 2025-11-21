@@ -1,0 +1,26 @@
+services:
+  asrserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: asrserver:latest
+    container_name: asrserver
+    restart: unless-stopped
+    environment:
+      API_PORT: "18081"
+      TRANSCODE_USE_STUBS: "0"
+      TRANSCODE_AUTOSTOP_IDLE: "0"
+      TRANSCODE_STALL_TIMEOUT: "5"
+      TRANSCODE_MAX_RESTARTS: "10"
+      TRANSCODE_RESTART_DELAY: "3"
+      TRANSCODE_WORK_DIR: /data/runs
+      THUMB_CACHE_DIR: /data/thumb_cache
+      AUTH_STORE: /data/auth/auth.json
+      AUTH_SCOPES: "user:read:follows user:read:email"
+    ports:
+      - "18081:18081"
+      - "5001:5001"
+    volumes:
+      - ./data/runs:/data/runs
+      - ./data/thumb_cache:/data/thumb_cache
+      - ./data/auth:/data/auth
