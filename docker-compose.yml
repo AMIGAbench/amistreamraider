@@ -16,7 +16,7 @@ services:
       TRANSCODE_WORK_DIR: /data/runs
       THUMB_CACHE_DIR: /data/thumb_cache
       AUTH_STORE: /data/auth/auth.json
-      AUTH_SCOPES: "user:read:follows user:read:email"
+      AUTH_SCOPES: "user:read:follows"
     ports:
       - "18081:18081"
       - "5001:5001"
