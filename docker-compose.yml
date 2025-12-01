@@ -7,7 +7,11 @@ services:
     container_name: asrserver
     restart: unless-stopped
     environment:
-      API_PORT: "18081"
+      API_PORT: "18080"
+      LOG_LEVEL: "DEBUG"
+      DISABLE_WEBUI: "1"
+      DISABLE_API: "0"
+      DISABLE_CHAT: "1"
       TRANSCODE_USE_STUBS: "0"
       TRANSCODE_AUTOSTOP_IDLE: "0"
       TRANSCODE_STALL_TIMEOUT: "5"
@@ -16,10 +20,9 @@ services:
       TRANSCODE_WORK_DIR: /data/runs
       THUMB_CACHE_DIR: /data/thumb_cache
       AUTH_STORE: /data/auth/auth.json
-      AUTH_SCOPES: "user:read:follows"
+      AUTH_SCOPES: "user:read:follows chat:read chat:edit"
     ports:
-      - "18081:18081"
-      - "5001:5001"
+      - "18080:18080"
     volumes:
       - ./data/runs:/data/runs
       - ./data/thumb_cache:/data/thumb_cache
