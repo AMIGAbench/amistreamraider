@@ -8,9 +8,11 @@ services:
     restart: unless-stopped
     environment:
       API_PORT: "18080"
+      WEB_DASH_PORT: "18083"
       DISABLE_WEBUI: "1"
       DISABLE_API: "0"
       DISABLE_CHAT: "1"
+      FFMPEG_LOGLEVEL: "quiet"
       TRANSCODE_USE_STUBS: "0"
       TRANSCODE_AUTOSTOP_IDLE: "0"
       TRANSCODE_STALL_TIMEOUT: "5"
@@ -22,6 +24,8 @@ services:
       AUTH_SCOPES: "user:read:follows"
     ports:
       - "18080:18080"
+      - "18083:18083"
+      - "5001:5001"
     volumes:
       - ./data/runs:/data/runs
       - ./data/thumb_cache:/data/thumb_cache
