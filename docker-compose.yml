@@ -1,8 +1,5 @@
 services:
   asrserver:
-    build:
-      context: .
-      dockerfile: Dockerfile
     image: cego1200/asrserver:latest
     container_name: asrserver
     restart: unless-stopped
