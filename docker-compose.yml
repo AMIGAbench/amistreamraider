@@ -1,6 +1,6 @@
 services:
   asrserver:
-    image: asrserver:latest
+    image: cego1200/asrserver:latest
     container_name: asrserver
     restart: unless-stopped
     ports:
